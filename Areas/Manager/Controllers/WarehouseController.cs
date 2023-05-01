@@ -12,6 +12,8 @@ namespace InventorySystem.Areas.Manager.Controllers
         private Repository<Warehouse> data { get; set; }
         public WarehouseController(InventorySystemContext ctx) => data = new Repository<Warehouse>(ctx);
 
+        private InventorySystemContext con;
+
         public ViewResult Index()
         {
             var search = new SearchData(TempData);
@@ -101,6 +103,20 @@ namespace InventorySystem.Areas.Manager.Controllers
                 Type = "warehouse"
             };
             return RedirectToAction("Search", "Product");
+        }
+
+        
+        public IActionResult VerifyWarehouseCode(int code)
+        {
+            var check = con.Warehouses.Find(code);
+            if (check == null)
+            {
+                return Json(true);
+            }
+            else
+            {
+                return Json($"Warehouse Code {code} is already exists.");
+            }
         }
 
     }
