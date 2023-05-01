@@ -106,18 +106,7 @@ namespace InventorySystem.Areas.Manager.Controllers
         }
 
         
-        public IActionResult VerifyWarehouseCode(int code)
-        {
-            var check = con.Warehouses.Find(code);
-            if (check == null)
-            {
-                return Json(true);
-            }
-            else
-            {
-                return Json($"Warehouse Code {code} is already exists.");
-            }
-        }
+        
 
     }
 }

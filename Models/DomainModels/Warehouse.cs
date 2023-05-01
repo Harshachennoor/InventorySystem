@@ -16,7 +16,7 @@ namespace InventorySystem.Models
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Please enter a warehouse code.")]
-        [Remote("VerifyWarehouseCode",ErrorMessage ="Warehouse Code should be unique")]
+        
         public int Code { get; set; }
 
         [StringLength(25)]
